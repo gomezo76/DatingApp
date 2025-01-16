@@ -49,7 +49,7 @@ public class AccountController(DataContext context, ITokenService tokenService) 
         var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
 
         if (!computedHash.SequenceEqual(user.PasswordHash)) {
-            return Unauthorized("Invalid or paswword");
+            return Unauthorized("Invalid username or paswword");
         }
 
         return new UserDto
